@@ -20,7 +20,7 @@
   <button onclick="send()">Send</button>
 
   <script>
-    const endpoint = "https://winter-sandwich-culture-present.trycloudflare.com/ask";
+    const endpoint = "https://jan-fields-disaster-shapes.trycloudflare.com/ask";
     const chat = document.getElementById("chat");
 
     async function send() {
@@ -36,7 +36,7 @@
         const res = await fetch(endpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ prompt, model: "tinyllama" })
+          body: JSON.stringify({ prompt, model: "phi:2.7b" })
         });
         const data = await res.json();
         chat.innerHTML += `<div class="bot"><b>AI:</b> ${data.response || "[No response]"}</div>`;
