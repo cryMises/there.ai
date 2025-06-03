@@ -1,0 +1,41 @@
+const endpoint = "https://0626ed32cd3bd9.lhr.life/ask";
+const chat = document.getElementById("chat");
+const promptInput = document.getElementById("prompt");
+const sendBtn = document.getElementById("send-btn");
+
+sendBtn.addEventListener("click", send);
+promptInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") send();
+});
+
+async function send() {
+  const prompt = promptInput.value.trim();
+  if (!prompt) return;
+
+  appendMessage("user", prompt);
+  promptInput.value = "";
+  chat.scrollTop = chat.scrollHeight;
+
+  try {
+    const res = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt, model: "phi:2.7b" })
+    });
+
+    const data = await res.json();
+    appendMessage("bot", data.response || "[No response]");
+  } catch (e) {
+    appendMessage("bot", `Error: ${e.message}`);
+  }
+
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function appendMessage(sender, text) {
+  const div = document.createElement("div");
+  div.className = sender;
+  div.innerHTML = `<b>${sender === "user" ? "You" : "AI"}:</b> ${text}`;
+  chat.appendChild(div);
+}
+
