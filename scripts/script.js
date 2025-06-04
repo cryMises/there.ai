@@ -23,6 +23,11 @@ async function send() {
       body: JSON.stringify({ prompt, model: "phi:2.7b" })
     });
 
+    if (!res.ok) {
+      appendMessage("bot", `Error ${res.status}`);
+      return;
+    }
+    
     const data = await res.json();
     appendMessage("bot", data.response || "[No response]");
   } catch (e) {
