@@ -1,4 +1,4 @@
-const endpoint = "https://0626ed32cd3bd9.lhr.life/ask";
+const endpoint = "https://lemur-immortal-perfectly.ngrok-free.app/ask";
 const chat = document.getElementById("chat");
 const promptInput = document.getElementById("prompt");
 const sendBtn = document.getElementById("send-btn");
