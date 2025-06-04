@@ -12,7 +12,7 @@ html, body {
 }
 
 .container {
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.5);
   padding: 1.5rem;
   border-radius: 12px;
   max-width: 600px;
@@ -26,7 +26,7 @@ html, body {
   height: 300px;
   overflow-y: auto;
   margin-bottom: 1rem;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.4);
   border-radius: 8px;
 }
 
@@ -50,13 +50,14 @@ input[type="text"] {
   padding: 0.5rem;
   font-size: 1rem;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
 }
 
 button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  background-color: #007bff;
+  background-color: #0ecf98;
   color: white;
   border: none;
   border-radius: 6px;
@@ -64,5 +65,26 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #0aa67a;
+}
+
+.typing {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #000;
+  width: 0;
+  animation: typing 3s steps(40, end) forwards, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+h1 {
+  font-size: 1.63rem;
 }
