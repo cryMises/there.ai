@@ -52,22 +52,20 @@ function appendMessage(sender, text) {
   chat.appendChild(div);
 }
 
-// Function to fetch and display the daily challenge
 async function loadChallenge() {
   const challengeEl = document.getElementById("daily-challenge");
   challengeEl.textContent = "Loading...";
 
   try {
-    const res = await fetch("https://lemur-immortal-perfectly.ngrok-free.app/challenge", {headers: { "X-API-KEY": "V2VkIEp1biAgNCAxMjo1NjoyNiBXSUIgMjAyNQo="}})
+    const res = await fetch("https://lemur-immortal-perfectly.ngrok-free.app/challenge", {method: "OPTIONS", headers: { "Content-Type": "application/json", "X-API-KEY": "V2VkIEp1biAgNCAxMjo1NjoyNiBXSUIgMjAyNQo="}})
     const data = await res.json();
-    challengeEl.textContent = `Daily Prompt Challenge: ${data.challenge}`;
+    challengeEl.textContent = 'Daily Prompt Challenge: ' + data.challenge;
   } catch (e) {
     challengeEl.textContent = "Failed to load challenge 😕";
     console.error("Error fetching challenge:", e);
   }
 }
 
-// Run on page load and bind refresh button
 window.addEventListener("DOMContentLoaded", () => {
   loadChallenge();
 
