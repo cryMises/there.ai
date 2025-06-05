@@ -107,3 +107,24 @@ h1 {
   66%  { content: '..'; }
   100% { content: '...'; }
 }
+
+#daily-challenge-box {
+  background-color: #fffbe6;
+  border: 1px solid #ffdf80;
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #9a6b00;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#daily-challenge {
+  flex: 1;
+  font-weight: bold;
+  text-align: left;
+}
