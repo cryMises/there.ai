@@ -16,18 +16,26 @@ async function send() {
   promptInput.value = "";
   chat.scrollTop = chat.scrollHeight;
 
+  const typingDiv = document.createElement("div");
+  typingDiv.className = "bot";
+  typingDiv.id = "typing";
+  typingDiv.innerHTML = `<b>AI:</b> <span class="dots"></span>`;
+  chat.appendChild(typingDiv);
+  chat.scrollTop = chat.scrollHeight;
+  
   try {
     const res = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json", "X-API-KEY": "V2VkIEp1biAgNCAxMjo1NjoyNiBXSUIgMjAyNQo="},
       body: JSON.stringify({ prompt, model: "phi:2.7b" })
     });
-
-    if (!res.ok) {
-      appendMessage("bot", `Error ${res.status}`);
-      return;
-    }
     
+    document.getElementById("typing")?.remove();
+    
+    if (!res.ok) {
+  appendMessage("bot", `Error ${res.status}`);
+  return;
+}
     const data = await res.json();
     appendMessage("bot", data.response || "[No response]");
   } catch (e) {
