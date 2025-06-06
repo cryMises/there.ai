@@ -1,14 +1,30 @@
 html, body {
   height: 100%;
+  width: 100%
   margin: 0;
   padding: 0;
-  background: linear-gradient(0deg, rgba(64, 224, 208, 1) 0%, rgba(102, 221, 170, 1) 100%);
-  background-repeat: no-repeat;
-  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: "JetBrains Mono";
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body::before, body::after{
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: opacity 0.8s ease;
+}
+body::before {
+    background: linear-gradient(0deg, rgba(64, 224, 208, 1) 0%, rgba(102, 221, 170, 1) 100%);
+    opacity: 1;
+}
+body.dark::before {
+  opacity: 0;
 }
 
 .container {
@@ -127,4 +143,60 @@ h1 {
   flex: 1;
   font-weight: bold;
   text-align: left;
+}
+
+#theme-toggle {
+  position: absolute;
+  right: 9vw;
+  z-index: 1000;
+  padding: 0.8em;
+  font-size: 1.4rem;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: all 0.8s ease;
+}
+
+#theme-toggle:hover {
+  background-color: #666;
+}
+
+@media (max-width: 500px) {
+  #theme-toggle {
+    right: 3vw;
+    bottom: 5vh;
+  }
+}
+
+body::before, body, button, h1, #daily-challenge-box {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body::after{
+  background: #8D4585;
+  background: linear-gradient(180deg, rgba(141, 69, 133, 1) 0%, rgba(128, 5, 23, 1) 100%);
+  opacity: 0;
+}
+body.dark::after{
+  opacity: 1;
+}
+body.dark button{
+  background-color: #d1699f;
+  color: antiquewhite;
+}
+body.dark button:hover{
+  background-color: #a94f7d;
+}
+
+body.dark #daily-challenge-box {
+  background-color: #a6519c;
+  border: 1px solid #c79de3;
+  color: antiquewhite;
+}
+
+body.dark h1{
+  color: antiquewhite;
 }
