@@ -36,7 +36,7 @@ async function send() {
     const res = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json", "X-API-KEY": "V2VkIEp1biAgNCAxMjo1NjoyNiBXSUIgMjAyNQo="},
-      body: JSON.stringify({ prompt, model: "phi:2.7b" })
+      body: JSON.stringify({ prompt, model: "tinyllama" })
     });
     
     document.getElementById("typing")?.remove();
