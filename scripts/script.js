@@ -8,10 +8,19 @@ promptInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") send();
 });
 
+function containsXSS(input) {
+  return /<script|<\/script|onerror=|onload=|javascript:|<iframe|<img|<svg/i.test(input);
+}
+
 async function send() {
   const prompt = promptInput.value.trim();
   if (!prompt) return;
-
+  
+  if (containsXSS(prompt)) {
+    alert("Your input contains unsafe content and was blocked.");
+    return;
+  }
+  
   appendMessage("user", prompt);
   promptInput.value = "";
   chat.scrollTop = chat.scrollHeight;
