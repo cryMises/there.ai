@@ -26,10 +26,17 @@ async function send() {
   chat.scrollTop = chat.scrollHeight;
   
   function typeMessage(text, container, sender = "AI") {
+  const label = document.createElement("b");
+  label.textContent = sender + ": ";
+  container.appendChild(label);
+
+  const messageNode = document.createElement("span");
+  container.appendChild(messageNode);
+
   let i = 0;
   const interval = setInterval(() => {
     if (i < text.length) {
-      container.innerHTML = `<b>${sender}:</b> ${text.slice(0, i + 1)}`;
+      messageNode.textContent += text[i];
       i++;
     } else {
       clearInterval(interval);
@@ -63,16 +70,28 @@ botDiv.className = "bot";
 chat.appendChild(botDiv);
 typeMessage(data.response || "[No response]", botDiv); 
   } catch (e) {
+    document.getElementById("typing")?.remove();
     appendMessage("bot", `Error: ${e.message}`);
   }
 
   chat.scrollTop = chat.scrollHeight;
 }
 
+function escapeHTML(str) {
+  return str.replace(/[&<>'"]/g, (tag) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    "'": '&#39;',
+    '"': '&quot;'
+  }[tag]));
+}
+
 function appendMessage(sender, text) {
   const div = document.createElement("div");
   div.className = sender;
-  div.innerHTML = `<b>${sender === "user" ? "You" : "AI"}:</b> ${text}`;
+  const safeText = escapeHTML(text);
+  div.innerHTML = `<b>${sender === "user" ? "You" : "AI"}:</b> ${safeText}`;
   chat.appendChild(div);
 }
 
