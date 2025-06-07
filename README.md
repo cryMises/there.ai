@@ -2,7 +2,7 @@
 
 **ThereAI** is a lightweight, frontend-first AI chatbot powered by open-source LLMs (like Microsoft Phi 2.7B) running on a mobile device using [Ollama](https://ollama.com/). It supports real-time interaction, daily prompt challenges, and modern UX features like typing animations.
 
-🚀 Live demo: [https://crymises.github.io/there.ai](https://crymises.github.io/there.ai/)
+🚀 Live demo[^1]: [https://crymises.github.io/there.ai](https://crymises.github.io/there.ai/)
 
 ---
 
@@ -56,3 +56,4 @@ MIT — free to fork, improve, and remix.
 - Ive bantu desain wkwkwkw
 
 ---
+[^1]: User IP and Chat History are **STORED** but never shared with other parties outside of the development team
