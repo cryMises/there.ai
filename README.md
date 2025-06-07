@@ -24,14 +24,14 @@
 - User input is sanitized before sending
 - Backend also blocks dangerous patterns (e.g. <script>)
 - Protection against unknown origins
-- Protection again api spam
+- Protection against API spam
 - API-KEY to prevent unlicensed user
 
 ---
 
 ## 📈 Roadmap
 
-- [ ] Chat history & localStorage
+- [x] Chat history
 - [ ] Markdown rendering for code/formatting
 - [ ] Multi-persona AI modes
 - [ ] Export chat as text/markdown
