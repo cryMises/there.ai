@@ -24,7 +24,19 @@ async function send() {
   appendMessage("user", prompt);
   promptInput.value = "";
   chat.scrollTop = chat.scrollHeight;
-
+  
+  function typeMessage(text, container, sender = "AI") {
+  let i = 0;
+  const interval = setInterval(() => {
+    if (i < text.length) {
+      container.innerHTML = `<b>${sender}:</b> ${text.slice(0, i + 1)}`;
+      i++;
+    } else {
+      clearInterval(interval);
+    }
+  }, 20);
+}
+  
   const typingDiv = document.createElement("div");
   typingDiv.className = "bot";
   typingDiv.id = "typing";
@@ -46,7 +58,10 @@ async function send() {
   return;
 }
     const data = await res.json();
-    appendMessage("bot", data.response || "[No response]");
+    const botDiv = document.createElement("div");
+botDiv.className = "bot";
+chat.appendChild(botDiv);
+typeMessage(data.response || "[No response]", botDiv); 
   } catch (e) {
     appendMessage("bot", `Error: ${e.message}`);
   }
@@ -75,6 +90,22 @@ async function loadChallenge() {
   }
 }
 
+// Apply saved theme
+const savedTheme = localStorage.getItem("thereai-theme");
+if (savedTheme === "dark") {
+  document.body.classList.add("dark");
+}
+
+// Theme toggle button
+const themeToggleBtn = document.getElementById("theme-toggle");
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    const isDark = document.body.classList.contains("dark");
+    localStorage.setItem("thereai-theme", isDark ? "dark" : "light");
+  });
+}
+
 window.addEventListener("DOMContentLoaded", () => {
   loadChallenge();
 
@@ -88,4 +119,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function toggleTheme() {
   document.body.classList.toggle("dark");
+  const isDark = document.body.classList.contains("dark");
+  localStorage.setItem("thereai-theme", isDark ? "dark" : "light");
 }
