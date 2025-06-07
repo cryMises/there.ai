@@ -54,7 +54,7 @@ async function send() {
   try {
     const res = await fetch(endpoint, {
       method: "POST",
-      headers: { "Content-Type": "application/json", "X-API-KEY": "V2VkIEp1biAgNCAxMjo1NjoyNiBXSUIgMjAyNQo="},
+      headers: { "Content-Type": "application/json", "X-API-KEY": "d8c3800df5d17bd2e894e1b69128d679d30aedb10e62a3ef7911c0c93bd75298"},
       body: JSON.stringify({ prompt, model: "phi:2.7b" })
     });
     
@@ -100,7 +100,7 @@ async function loadChallenge() {
   challengeEl.textContent = "Loading...";
 
   try {
-    const res = await fetch("https://lemur-immortal-perfectly.ngrok-free.app/challenge", {method: "POST", headers: { "Content-Type": "application/json", "X-API-KEY": "V2VkIEp1biAgNCAxMjo1NjoyNiBXSUIgMjAyNQo="}})
+    const res = await fetch("https://lemur-immortal-perfectly.ngrok-free.app/challenge", {method: "POST", headers: { "Content-Type": "application/json", "X-API-KEY": "d8c3800df5d17bd2e894e1b69128d679d30aedb10e62a3ef7911c0c93bd75298"}})
     const data = await res.json();
     challengeEl.textContent = 'Daily Prompt Challenge: ' + data.challenge;
   } catch (e) {
