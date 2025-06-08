@@ -21,6 +21,10 @@ async function send() {
     return;
   }
   
+  promptInput.disabled = true;
+  sendBtn.disabled = true;
+
+  
   appendMessage("user", prompt);
   promptInput.value = "";
   chat.scrollTop = chat.scrollHeight;
@@ -74,6 +78,9 @@ typeMessage(data.response || "[No response]", botDiv);
     appendMessage("bot", `Error: ${e.message}`);
   }
 
+  promptInput.disabled = false;
+  sendBtn.disabled = false;
+  
   chat.scrollTop = chat.scrollHeight;
 }
 
@@ -100,7 +107,7 @@ async function loadChallenge() {
   challengeEl.textContent = "Loading...";
 
   try {
-    const res = await fetch("https://lemur-immortal-perfectly.ngrok-free.app/challenge", {method: "POST", headers: { "Content-Type": "application/json", "X-API-KEY": "d8c3800df5d17bd2e894e1b69128d679d30aedb10e62a3ef7911c0c93bd75298"}})
+    const res = await fetch("https://lemur-immortal-perfectly.ngrok-free.app/challenge", {method: "POST", headers: { "Content-Type": "application/json", "X-API-KEY": "385a576890192af8a9226f07247ae3525167b2bcf92afda1cb62575c7a7cb0e0"}})
     const data = await res.json();
     challengeEl.textContent = 'Daily Prompt Challenge: ' + data.challenge;
   } catch (e) {
