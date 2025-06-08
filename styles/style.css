@@ -206,3 +206,9 @@ body.dark #daily-challenge-box {
 body.dark h1{
   color: antiquewhite;
 }
+
+button:disabled, body.dark button:disabled {
+  background-color: #CF142B;
+  cursor: not-allowed;
+  transition: all 0.8s ease;
+}
