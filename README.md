@@ -10,12 +10,13 @@
 
 - 🧠 AI chatbot powered by `phi:2.7b` via Ollama
 - 💬 Typing animation effect for more natural replies
-- 🧪 Daily Prompt Challenge with `/challenge` endpoint
+- 🧪 Daily Prompt Challenge via `/challenge` endpoint
 - 🧼 Input sanitization and XSS prevention
 - 🌐 Deployed frontend on GitHub Pages
 - 📡 Ngrok tunneling for local Flask API
 - 🗝️ API key + origin restrictions on backend
 - 🔐 Rate-limited `/ask` and `/challenge` endpoints
+- 💻 Admin dashboard to observe user activity
 
 ---
 
