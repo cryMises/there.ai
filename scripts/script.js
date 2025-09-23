@@ -59,7 +59,7 @@ async function send() {
     const res = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json", "X-API-KEY": "d8c3800df5d17bd2e894e1b69128d679d30aedb10e62a3ef7911c0c93bd75298"},
-      body: JSON.stringify({ prompt, model: "phi:2.7b" })
+      body: JSON.stringify({ prompt, model: "deepseek-v3.1:671b-cloud" })
     });
     
     document.getElementById("typing")?.remove();
